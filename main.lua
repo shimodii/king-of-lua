@@ -3,6 +3,7 @@ function love.load()
     player.x = 0
     player.y = 0
     player.speed = 2
+    player.sprite = love.graphics.newImage('sprites/player-sheet.png')
 end
 
 function love.update(dt)
