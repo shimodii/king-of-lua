@@ -6,6 +6,14 @@ function love.load()
     player.y = 0
     player.speed = 2
     player.sprite = love.graphics.newImage('sprites/player-sheet.png')
+    -- grid for animation on player spritesheet image (anim8)
+    player.grid = anim8.newGrid(12, 18, player.sprite:getWidth(), player.sprite:getHeight())
+
+    player.animation = {}
+    player.animation.down = anim8.newAnimation(player.grid('1-4', 1), 0.2)
+    player.animation.up = anim8.newAnimation(player.grid('1-4', 4), 0.2)
+    player.animation.left = anim8.newAnimation(player.grid('1-4', 2), 0.2)
+    player.animation.right = anim8.newAnimation(player.grid('1-4', 3), 0.2)
 end
 
 function love.update(dt)
