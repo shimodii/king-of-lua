@@ -1,4 +1,6 @@
 function love.load()
+    anim8 = require 'libraries.anim8'
+
     player = {}
     player.x = 0
     player.y = 0
