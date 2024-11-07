@@ -8,6 +8,7 @@ function love.load()
     player.y = 0
     player.speed = 2
     player.sprite = love.graphics.newImage('sprites/player-sheet.png')
+    player.zoom = 6
     -- grid for animation on player spritesheet image (anim8)
     player.grid = anim8.newGrid(12, 18, player.sprite:getWidth(), player.sprite:getHeight())
 
@@ -57,5 +58,5 @@ function love.update(dt)
 end
 
 function love.draw()
-    player.animation:draw(player.sprite, player.x, player.y, nil, 10)
+    player.animation:draw(player.sprite, player.x, player.y, nil, player.zoom)
 end
