@@ -23,21 +23,34 @@ function love.load()
 end
 
 function love.update(dt)
+    -- keep tracking that player is moving or not for better player animation
+    -- this help that when player stops moving the sprite that is showing-
+    -- to player is the still style that is on column 2 of our spritesheet
+    local isMoving = false
+
     if love.keyboard.isDown("w") then
         player.y = player.y - player.speed
         player.animation = player.animations.up
+        isMoving = true
     end
     if love.keyboard.isDown("a") then
         player.x = player.x - player.speed
         player.animation = player.animations.left
+        isMoving = true
     end
     if love.keyboard.isDown("s") then
         player.y = player.y + player.speed
         player.animation = player.animations.down
+        isMoving = true
     end
     if love.keyboard.isDown("d") then
         player.x = player.x + player.speed
         player.animation = player.animations.right
+        isMoving = true
+    end
+    
+    if isMoving == false then
+        player.animation:gotoFrame(2)
     end
 
     player.animation:update(dt)
