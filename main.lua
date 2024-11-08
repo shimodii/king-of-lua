@@ -1,7 +1,12 @@
 function love.load()
+    -- player animation library
     anim8 = require 'libraries.anim8'
     -- for fixing low quality of images
     love.graphics.setDefaultFilter("nearest", "nearest")
+
+    -- map library
+    sti = require 'libraries.sti'
+    gameMap = sti('maps/demoMap.lua')
 
     player = {}
     player.x = 0
@@ -49,7 +54,7 @@ function love.update(dt)
         player.animation = player.animations.right
         isMoving = true
     end
-    
+
     if isMoving == false then
         player.animation:gotoFrame(2)
     end
