@@ -1,3 +1,4 @@
 ## Todo:
-- [ ] adding map with tiled
+- [x] adding map with tiled
 - [ ] adding camera to tracking player position
+- [ ] adding physics of map object for player
