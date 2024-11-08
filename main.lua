@@ -1,19 +1,19 @@
 function love.load()
     -- player animation library
-    anim8 = require 'libraries.anim8'
+    anim8 = require 'libraries/anim8'
     -- for fixing low quality of images
     love.graphics.setDefaultFilter("nearest", "nearest")
 
     -- map library
-    sti = require 'libraries.sti'
+    sti = require 'libraries/sti'
     gameMap = sti('maps/demoMap.lua')
 
     player = {}
     player.x = 0
     player.y = 0
-    player.speed = 2
+    player.speed = 0.3
     player.sprite = love.graphics.newImage('sprites/player-sheet.png')
-    player.zoom = 6
+    player.zoom = 2
     -- grid for animation on player spritesheet image (anim8)
     player.grid = anim8.newGrid(12, 18, player.sprite:getWidth(), player.sprite:getHeight())
 
@@ -60,8 +60,10 @@ function love.update(dt)
     end
 
     player.animation:update(dt)
+    gameMap:update(dt)
 end
 
 function love.draw()
+    gameMap:draw()
     player.animation:draw(player.sprite, player.x, player.y, nil, player.zoom)
 end
